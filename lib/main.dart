@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:sample_hook_riverpod/routes.dart';
+import 'package:sample_hook_riverpod/provider_observable.dart';
+
+import 'splash_page.dart';
 
 void main() {
-  runApp(ProviderScope(child: MyApp()));
+  runApp(ProviderScope(observers: [MProviderObservable()], child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -15,9 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      navigatorKey: AppNavigator.navigatorKey,
-      onGenerateRoute: AppNavigator.onGenerateRoute,
-      initialRoute: NavigationPaths.login,
+      home: SplashPage(),
     );
   }
 }
